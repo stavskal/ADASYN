@@ -26,6 +26,7 @@ class Adasyn(object):
         self.ratio = ratio
         self.imb_threshold = imb_threshold
         self.verbose = verbose
+        self.clstats = {}
 
     def fit(self, X, y):
 
@@ -41,3 +42,35 @@ class Adasyn(object):
         else:
             if self.binary:
                 raise ValueError('Set binary=False (default) for multiclass problems')
+
+
+        # Initialize all class populations with zero
+        for element in unique_classes:
+        	self.clstats[element] = 0
+
+        # Count occurences of each class
+        for element in self.y:
+        	self.clstas[element] += 1
+
+        # Find majority class 
+        v = list(self.clstats.values())
+        k = list(self.clstats.keys())
+        maj_class = k[v.index(max(v))]
+
+        # Remove majority class from set
+        unique_classes.remove(maj_class)
+        
+      	for cl in unique_classes:
+      		# Calculate imbalance degree and compare to threshold
+      		imb_degree = float(self.clstats[cl]) / self.clstats[maj_class]
+      	
+      		if imb_degree > self.imb_threshold:
+      			raise ValueError('Imbalance threshold not satisfied, try reducing imb_threshold parameter')
+      		else:
+      			self.new_X, self.new_Y = self.oversample()
+
+
+
+
+
+    def oversample():
