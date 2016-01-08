@@ -37,7 +37,7 @@ class Adasyn(object):
             raise RuntimeError("Only one class present, exiting...")
         elif len(unique_classes) == 2:
             if not self.binary:
-                raise ValueError('Set 'binary=True' for binary classification problems')
+                raise ValueError('Set binary=True for binary classification problems')
         else:
             if self.binary:
-                raise ValueError('Set 'binary=False'(default) for multiclass problems')
+                raise ValueError('Set binary=False (default) for multiclass problems')
