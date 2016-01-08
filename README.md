@@ -5,4 +5,4 @@ Original paper can be found [here](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&
 
 This module extends the idea presented in the paper by Haibo He et al. to include oversampling for multiclass classification problems. It is designed to be compatible with [scikit-learn] (https://github.com/scikit-learn/scikit-learn)
 
-Props to [fmfn](https://github.com/fmfn) for his good code structure and documentation
+Props to [fmfn](https://github.com/fmfn) who implemented different oversampling techniques for his good code structure and documentation
