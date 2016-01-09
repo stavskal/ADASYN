@@ -61,12 +61,6 @@ class Adasyn(object):
                 % (self.maj_class_, len(self.unique_classes_)))
 
 
-        
-
-        
-
-
-
     def transform(self):
     	"""
     	Applies oversampling transformation to data as proposed by
@@ -87,13 +81,17 @@ class Adasyn(object):
 
 
     def oversample(self):
+        """
+        Actual generation of synthetic data, called by transform
+        and fit_transform
+        """
 
     	try:
     		# Removing majority class from set since it is
         	# stored in its own variable
         	self.unique_classes_ = self.unique_classes_ 
         except:
-    		raise RuntimeError("Execute fit() before applying tranform(),"
+    		raise RuntimeError("You need to fit() before applying tranform(),"
     							"or simply fit_transform()")
 
     	# Checking if parameters are set correctly depending
@@ -112,7 +110,6 @@ class Adasyn(object):
         # Iterating through all minority classes to determine
         # if they should be oversampled and to what extent
     	for cl in self.unique_classes_:
-    		#ri = np.zeros()
             # Calculate imbalance degree and compare to threshold
             imb_degree = float(self.clstats[cl]) / self.clstats[self.maj_class_]
             if imb_degree > self.imb_threshold:
@@ -138,9 +135,10 @@ class Adasyn(object):
                 tempdi = [Counter(i) for i in knnLabels]
 
                 # Calculating ri as defined in ADASYN paper:
-                # No. of neighbors with different class than the minority divided by K 
+                # No. of neighbors belonging to different class than the minority divided by K 
                 # which is ratio of friendly/non-friendly neighbors 
                 self.ri = [(sum(i.values())-i[cl])/float(self.k) for i in tempdi]
+                print(self.ri) #not normalized yet
 
 
 
