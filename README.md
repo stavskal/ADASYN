@@ -1,5 +1,4 @@
-# ADASYN 
-## Adaptive Synthetic Sampling Approach for Imbalanced Learning 
+# Adaptive Synthetic Sampling Approach for Imbalanced Learning 
 
 ADASYN is a python module that implements an adaptive oversampling technique for skewed datasets.
 
