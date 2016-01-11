@@ -119,7 +119,7 @@ class Adasyn(object):
                 # G is the number of synthetic examples to be synthetically
                 # produced for the current minority class
                 G = (self.clstats[self.maj_class_] - self.clstats[cl]) * self.ratio
-                
+                print(G)
                 # ADASYN is built upon eucliden distance so p=2 explicitly
                 self.nearest_neighbors_ = NearestNeighbors(n_neighbors=self.k, p=2).fit(self.X)
 
@@ -138,7 +138,14 @@ class Adasyn(object):
                 # No. of neighbors belonging to different class than the minority divided by K 
                 # which is ratio of friendly/non-friendly neighbors 
                 self.ri = [(sum(i.values())-i[cl])/float(self.k) for i in tempdi]
-                print(self.ri) #not normalized yet
+                print(self.ri, sum(self.ri), np.sum(self.ri))
+
+                #Normalizing so that ri is a density distribution (i.e. sum(ri)=1)
+                self.ri = self.ri / np.sum(self.ri)
+                # Calculating #synthetic_examples that need to be generated for
+                # each minority instance
+                self.gi = self.ri * G
+
 
 
 
@@ -146,18 +153,41 @@ class Adasyn(object):
 
 
 
+def deleteClass(X,y,num,c):
+    """Delete 'num' samples from class='class' in StudentLife dataset stress reports
+    """
+    
+    twoIndex=np.array([i for i in range(len(y)) if y[i]==c])
+    np.random.shuffle(twoIndex)
 
+    if num >= 0.7*len(twoIndex):
+        print('Number of examples requested for delete too many...')
+        exit()
+
+
+    delIndex=twoIndex[0:num]
+
+    X=np.delete(X,delIndex,0)
+    y=np.delete(y,delIndex,0)
+
+    print(X.shape,y.shape)
+
+    return(X,y)
 
 
 from sklearn.datasets import load_iris
 data = load_iris()
 X = data['data']
 y = data['target']
+print(Counter(y))
+X,y = deleteClass(X,y,30,2)
+print(Counter(y))
+#exit()
 testnn = NearestNeighbors(n_neighbors=3, p=2).fit(X)
 b =testnn.kneighbors(X,return_distance=False)
 asda = ([y[ele] for ind,ele in enumerate(b) if y[ind]==1])
 #print(asda)
 #print(b[1])
 #exit()
-a=Adasyn(imb_threshold=1,verbose=True)
+a=Adasyn(verbose=True)
 a.fit_transform(X,y)
