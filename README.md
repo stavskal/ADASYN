@@ -2,6 +2,8 @@
 
 ADASYN is a python module that implements an adaptive oversampling technique for skewed datasets.
 
+## Developed under [IMEC](http://www.imec-nl.nl) 
+
 ### Dependencies
 * pip (needed for install)
 * numpy
