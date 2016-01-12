@@ -31,9 +31,9 @@ Original paper can be found [here](http://ieeexplore.ieee.org/xpl/login.jsp?tp=&
 
 This module implements the idea presented in the paper by Haibo He et al. and also includes oversampling for **multiclass** classification problems. It is designed to be compatible with [scikit-learn] (https://github.com/scikit-learn/scikit-learn). It focuses on oversampling the examples that are harder to classify and has shown results which sometimes outperform SMOTE or SMOTEboost.
 
-Props to [fmfn](https://github.com/fmfn) who implemented different oversampling techniques for his good code structure and documentation
-
-
 An example can be seen below:
 
 ![alt tag](https://github.com/stavskal/ADASYN/blob/master/sample.jpg)
+
+
+Props to [fmfn](https://github.com/fmfn) who implemented different oversampling techniques for his good code structure and documentation
