@@ -19,13 +19,10 @@ To use ADASYN you will need to clone this repository and install it running the 
     
 After you have installed the packages you can proceed with using:
 
-    ```python    
     from adasyn import ADASYN
     adsn = ADASYN(k=7,imb_threshold=0.6, ratio=0.75)
-    #your imbalanced dataset is in X,y
-    new_X, new_y = adsn.fit_transform(X,y)
-    ```
-    
+    new_X, new_y = adsn.fit_transform(X,y)  # your imbalanced dataset is in X,y
+
     
     
     
