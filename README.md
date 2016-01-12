@@ -36,4 +36,4 @@ An example can be seen below:
 ![alt tag](https://github.com/stavskal/ADASYN/blob/master/sample.jpg)
 
 
-Props to [fmfn](https://github.com/fmfn) who implemented different oversampling techniques for his good code structure and documentation
+Props to [fmfn](https://github.com/fmfn) who implemented different oversampling techniques for his good code structure, which highly influenced this module, and documentation
