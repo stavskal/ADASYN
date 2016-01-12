@@ -139,10 +139,6 @@ class ADASYN(object):
                          if knnLabels[ind][index +1] == cl]
 
             if not min_knns:
-                if self.verbose:
-                    print(
-                        'No k-neighbors belong to the minority class for row %s'
-                        ',no samples produced' % elem)
                 continue
 
             # generate gi synthetic examples for every minority example
@@ -197,7 +193,7 @@ class ADASYN(object):
                 self.nearest_neighbors_.fit(self.X)
 
                 # keeping indexes of minority examples
-                minx = [ind for ind, exam in enumerate(self.X) if y[ind] == cl]
+                minx = [ind for ind, exam in enumerate(self.X) if self.y[ind] == cl]
 
                 # Computing kNearestNeighbors for every minority example
                 knn = self.nearest_neighbors_.kneighbors(
@@ -205,7 +201,7 @@ class ADASYN(object):
 
                 # Getting labels of k-neighbors of each example to determine how many of them
                 # are of different class than the one being oversampled
-                knnLabels = [y[ele] for ind, ele in enumerate(knn)]
+                knnLabels = [self.y[ele] for ind, ele in enumerate(knn)]
 
                 tempdi = [Counter(i) for i in knnLabels]
                 # Calculating ri as defined in ADASYN paper:
