@@ -23,4 +23,4 @@ Props to [fmfn](https://github.com/fmfn) who implemented different oversampling 
 
 An example can be seen below:
 
-![alt tag](http://imgur.com/PYH2JOg)
+![alt tag](https://github.com/stavskal/ADASYN/blob/master/sample.jpg)
