@@ -4,9 +4,10 @@ ADASYN is a python module that implements an adaptive oversampling technique for
 
 ### Dependencies
 * pip (needed for install)
+* numpy
 * scipy
 * scikit-learn
-* numpy
+
 
 ### Installation
 
