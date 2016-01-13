@@ -84,7 +84,7 @@ class ADASYN(object):
         variables. Also stores majority class label
         """
         self.X = check_array(X)
-        self.y = y
+        self.y = np.array(y)
         self.random_state_ = check_random_state(self.random_state)
         self.unique_classes_ = set(self.y)
 
@@ -201,14 +201,14 @@ class ADASYN(object):
 
                 # Getting labels of k-neighbors of each example to determine how many of them
                 # are of different class than the one being oversampled
-                knnLabels = [self.y[ele] for ind, ele in enumerate(knn)]
+                knnLabels = self.y[knn.ravel()].reshape(knn.shape)
 
-                tempdi = [Counter(i) for i in knnLabels]
+                tempdi = [np.bincount(i,minlength=max(self.y)) for i in knnLabels]
                 # Calculating ri as defined in ADASYN paper:
                 # No. of k-neighbors belonging to different class than the minority divided by K
                 # which is ratio of friendly/non-friendly neighbors
                 self.ri = np.array(
-                    [(sum(i.values()) - i[cl]) / float(self.k) for i in tempdi])
+                    [(sum(i) - i[cl]) / float(self.k) for i in tempdi])
 
                 # Normalizing so that ri is a density distribution (i.e.
                 # sum(ri)=1)
