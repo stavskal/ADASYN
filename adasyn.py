@@ -84,7 +84,7 @@ class ADASYN(object):
         variables. Also stores majority class label
         """
         self.X = check_array(X)
-        self.y = np.array(y)
+        self.y = np.array(y).astype(np.int64)
         self.random_state_ = check_random_state(self.random_state)
         self.unique_classes_ = set(self.y)
 
