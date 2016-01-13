@@ -39,3 +39,8 @@ An example can be seen below:
 
 
 Props to [fmfn](https://github.com/fmfn) who implemented different oversampling techniques for his good code structure, which highly influenced this module, and documentation
+
+
+Reference:
+
+1. H. He, Y. Bai, E. A. Garcia, and S. Li, “ADASYN: Adaptive Synthetic Sampling Approach for Imbalanced Learning,” in Proc. Int. Joint Conf. Neural Networks (IJCNN’08), pp. 1322-1328, 2008.
