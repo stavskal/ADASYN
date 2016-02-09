@@ -2,6 +2,8 @@
 
 ADASYN is a python module that implements an adaptive oversampling technique for skewed datasets.
 
+Many ML algorithms have trouble dealing with largely skewed datasets. If your dataset is 1000 examples and 950 of them belong to class 'Haystack' and the rest 50 belong to class 'Needle' it gets hard to predict new unseen data that belong to 'Needle' . What this algorithm does is create new artificial data that belong to the minority class by adding some semi-random noise to existing examples. For more information read the full paper
+
 ### Dependencies
 * pip (needed for install)
 * numpy
