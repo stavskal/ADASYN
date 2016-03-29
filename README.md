@@ -13,13 +13,8 @@ Many ML algorithms have trouble dealing with largely skewed datasets. If your da
 
 ### Installation
 
-To use ADASYN you will need to clone this repository and install it running the following :
+To use ADASYN you will need to  running the following :
 
-    git clone https://github.com/stavskal/ADASYN.git
-    cd ADASYN
-    pip install -r requirements.txt
-    
-However sometimes this can fail. If that's the case for you then you can alternatively:
 
  ```
    pip install git+https://github.com/stavskal/ADASYN    
