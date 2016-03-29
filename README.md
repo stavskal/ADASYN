@@ -19,7 +19,10 @@ To use ADASYN you will need to clone this repository and install it running the 
     cd ADASYN
     pip install -r requirements.txt
     
+However sometimes this can fail. If that's the case for you then you can alternatively:
     
+   pip install git+https://github.com/stavskal/ADASYN    
+
 After you have installed the packages you can proceed with using:
 
     from adasyn import ADASYN
