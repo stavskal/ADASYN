@@ -76,6 +76,8 @@ class ADASYN(object):
         self.random_state = random_state
         self.verbose = verbose
         self.clstats = {}
+        self.num_new = 0
+        self.index_new = []
 
 
     def fit(self, X, y):
@@ -154,6 +156,7 @@ class ADASYN(object):
                     
                 new_data.append(si)
                 new_labels.append(self.y[elem])
+                self.num_new += 1
 
         return(np.asarray(new_data), np.asarray(new_labels))
 
@@ -230,5 +233,7 @@ class ADASYN(object):
                     int_X = np.concatenate((int_X, inter_X), axis=0)
                 if len(inter_y):
                     int_y = np.concatenate((int_y, inter_y), axis=0)
-
+        # New samples are concatenated in the beggining of the X,y arrays
+        # index_new contains the indiced of artificial examples
+        self.index_new = [i for i in range(0,self.num_new)]
         return(int_X[1:-1], int_y[1:-1])
