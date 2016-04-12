@@ -203,12 +203,13 @@ class ADASYN(object):
                 # are of different class than the one being oversampled
                 knnLabels = self.y[knn.ravel()].reshape(knn.shape)
 
-                tempdi = [np.bincount(i,minlength=max(self.y)) for i in knnLabels]
+                tempdi = [Counter(i) for i in knnLabels]
+
                 # Calculating ri as defined in ADASYN paper:
                 # No. of k-neighbors belonging to different class than the minority divided by K
                 # which is ratio of friendly/non-friendly neighbors
                 self.ri = np.array(
-                    [(sum(i) - i[cl]) / float(self.k) for i in tempdi])
+                    [(sum(i.values())- i[cl]) / float(self.k) for i in tempdi])
 
                 # Normalizing so that ri is a density distribution (i.e.
                 # sum(ri)=1)
