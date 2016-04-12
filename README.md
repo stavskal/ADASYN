@@ -25,6 +25,9 @@ After you have installed the packages you can proceed with using:
     from adasyn import ADASYN
     adsn = ADASYN(k=7,imb_threshold=0.6, ratio=0.75)
     new_X, new_y = adsn.fit_transform(X,y)  # your imbalanced dataset is in X,y
+    # In many applications you may want to keep artificial data separately
+    # adsn.index_new holds the indiced of these examples
+    
 
     
     
