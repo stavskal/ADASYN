@@ -146,8 +146,8 @@ class ADASYN(object):
             # generate gi synthetic examples for every minority example
             for i in range(0, int(self.gi[ind])):
                 # randi holds an integer to choose a random minority kNNs
-                randi = self.random_state_.random_integers(
-                    0, len(min_knns) - 1)
+                randi = self.random_state_.randint(
+                    0, len(min_knns))
                 # l is a random number in [0,1)
                 l = self.random_state_.random_sample()
                 # X[min_knns[randi]] is the Xzi on equation [5]
